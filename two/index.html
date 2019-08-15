@@ -1,0 +1,103 @@
+<html>
+    <body>
+	<script>
+
+		var Module = {
+
+			onRuntimeInitialized: function() {
+				
+			}
+
+
+		};
+
+			function doSomething(){
+				alert("Welcome to Asteroid Dodge!");
+			}
+
+			function setScore(x){
+				document.getElementById("Score").textContent = "Score: " + x;	
+                console.log(x);
+			}
+
+			function drawShip(x, y) {
+				var ctx = document.getElementById("theCanvas").getContext("2d");
+				ctx.clearRect(0, 0, 200, 100);
+				ctx.beginPath();
+				ctx.moveTo(x, y);
+				ctx.lineTo(x - 10, y + 20);
+				ctx.lineTo(x + 10, y + 20);
+				ctx.lineTo(x, y);
+				ctx.stroke();
+    		}
+		
+   			function drawDead() {
+				var ctx = document.getElementById("theCanvas").getContext("2d");
+				ctx.clearRect(0, 0, 200, 100);
+				ctx.font = '24px serif';
+				ctx.strokeText('U DEAD', 40, 40);
+				ctx.strokeText('Game Over', 40, 70);
+ 			}
+
+    		function drawStart() {
+				var ctx = document.getElementById("theCanvas").getContext("2d");
+				ctx.clearRect(0, 0, 200, 100);
+				ctx.font = '20px serif';
+				ctx.strokeText('Press Enter to Start', 25, 60);
+    		}
+
+			function drawAsteroid(x, y, r) {
+			var ctx = document.getElementById("theCanvas").getContext("2d");
+			ctx.beginPath();
+			ctx.arc(x, y, r, 0, 2 * Math.PI);
+			ctx.stroke();
+ 		   }
+
+			document.onkeydown = function (evt) {
+  				evt = evt || window.event;
+				  Module.handleKey(evt.key);
+			};
+
+	    function drawMissle (x, y) {
+			var ctx = document.getElementById("theCanvas").getContext("2d");
+			ctx.beginPath();
+			ctx.moveTo(x, y);
+			ctx.lineTo(x + 6, y);
+			ctx.lineTo(x + 6, y + 10);
+			ctx.lineTo(x, y + 10);
+			ctx.lineTo(x, y);
+			ctx.stroke();
+        }
+
+		function drawExplosion( x, y, radius) {
+        var ctx = document.getElementById("theCanvas").getContext("2d");
+        ctx.beginPath();
+        for (i = 1; i < 20; i++) {
+            var r = Math.floor(Math.random() * 255);
+            var g = Math.floor(Math.random() * 255);
+            var b = Math.floor(Math.random() * 255);
+            var color = 'rgb(' + r + ',' + g + ',' + b + ')';
+            console.log(color);
+            ctx.fillStyle = color;
+            var dx = Math.floor((Math.random() * 30) + (x - 15));
+            var dy = Math.floor((Math.random() * 30) + (y - 15));
+            ctx.fillRect(dx, dy, 2, 2);
+        }
+        ctx.fillStyle = "rgb(0,0,0)";
+    }
+
+	</script>
+   <script src="main.js"></script>
+<div style="width:100%">
+<div style="margin-left:auto; margin-right:auto;width:206px"> 
+   <h3>-Asteroid Dodge-</h3>
+   <div style="border:solid;border-width:medium;width:205px">
+	   <canvas id="theCanvas"  width="200" height="100" style="border:2px; border-color:black"></canvas>
+	   <br />
+   </div>
+   
+   <p>Score: <span id="Score" >0</span></p>
+</div> 
+</div>
+    </body>
+</html>

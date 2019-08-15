@@ -1,0 +1,101 @@
+<html>
+    <body>
+    
+
+	<script>
+
+		var Module = {
+
+			onRuntimeInitialized: function() {
+				alert(Module.hello());
+			},
+
+			doSomething: function(){
+				var y = document.getElementById("display").value;
+				document.getElementById("display").value = Module.evaluate(y);
+
+
+			}
+		};
+
+		function doAdd(){
+
+		}
+
+		function doSubtract(){
+
+		}
+
+		function setDisplay(x){
+			document.getElementById("display").value += x;
+		}
+
+		function clearDisplay(){
+			document.getElementById("display").value = "";
+		}
+
+	</script>
+   <script src="main.js"></script>
+
+	<table style="margin-left: auto; margin-right: auto">
+		<tr>
+			<td colspan="3">
+				<input type="text" id="display" style="width:158px" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+					<button value="7" onclick="setDisplay(7)" style="width:50px">7</button>
+			</td>
+			<td>
+					<button value="8" onclick="setDisplay(8)" style="width:50px">8</button>
+			</td>
+			<td>
+					<button value="9" onclick="setDisplay(9)" style="width:50px">9</button>
+			</td>
+		</tr>
+		<tr>
+				<td>
+						<button value="4" onclick="setDisplay(4)" style="width:50px">4</button>
+				</td>
+				<td>
+						<button value="5" onclick="setDisplay(5)" style="width:50px">5</button>
+				</td>
+				<td>
+						<button value="6" onclick="setDisplay(6)" style="width:50px">6</button>
+				</td>
+			</tr>
+			<tr>
+					<td>
+						<button value="1" onclick="setDisplay(1)" style="width:50px">1</button>
+					</td>
+					<td>
+							<button value="2" onclick="setDisplay(2)" style="width:50px">2</button>
+					</td>
+					<td>
+							<button value="3" onclick="setDisplay(3)" style="width:50px">3</button>
+					</td>
+				</tr>
+				<tr>
+						<td>
+							<button value="0" onclick="setDisplay(0)" style="width:50px">0</button>
+						</td>
+						<td>
+							<button value="add" onclick="setDisplay('+')" style="width:50px">+</button>
+						</td>
+						<td>
+							<button value="subtract" onclick="setDisplay('-')" style="width:50px">-</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+								<button value="AC" onclick="clearDisplay()" style="width: 50px">AC</button>
+						</td>
+						<td colspan="2">
+							<button value="equal" onclick="Module.doSomething()" style="width: 104px">=</button>
+						</td>
+					</tr>
+	</table> 
+   
+    </body>
+</html>
