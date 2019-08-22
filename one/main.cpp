@@ -62,10 +62,10 @@ int doSub(int acc, std::string x){
       m=true;
     }
 
-        if(loc!=std::string::npos){
-      std::string first(x.substr(0, loc));
-      std::string right(x.substr(loc + 1, x.length()));
-       left = acc - std::stoi(first);
+      if(loc!=std::string::npos){
+        std::string first(x.substr(0, loc));
+        std::string right(x.substr(loc + 1, x.length()));
+        left = acc - std::stoi(first);
       if(!m){
         result = doAdd(left, right);
       }else{
@@ -81,15 +81,8 @@ int doSub(int acc, std::string x){
 }
 
 std::string evaluate(std::string x){
-  try{
      int result = doAdd(0, x);    
      return std::to_string(result);
-  }catch(std::exception &err)
-  {
-    std::string errorMsg = "-ERROR-";
-    return errorMsg;
-  }
-    
 }
 
 EMSCRIPTEN_BINDINGS(my_module)
